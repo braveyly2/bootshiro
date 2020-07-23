@@ -16,6 +16,7 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 
@@ -37,7 +38,7 @@ public class BonJwtFilter extends AbstractPathMatchingFilter {
     private static final Logger LOGGER = LoggerFactory.getLogger(BonJwtFilter.class);
     private static final String STR_EXPIRED = "expiredJwt";
 
-
+    @Autowired
     private StringRedisTemplate redisTemplate;
     private AccountService accountService;
 

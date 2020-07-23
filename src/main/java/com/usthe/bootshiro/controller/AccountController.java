@@ -116,7 +116,7 @@ public class AccountController extends BaseAction {
 
         if (isEncryptPassword) {
             // 从Redis取出密码传输加密解密秘钥
-            String tokenKey = redisTemplate.opsForValue().get("TOKEN_KEY_" + IpUtil.getIpFromRequest(WebUtils.toHttp(request)).toUpperCase()+userKey);
+            String tokenKey = redisTemplate.opsForValue().get("TOKEN_KEY_" + userKey.toUpperCase());
             password = AesUtil.aesDecode(password, tokenKey);
         }
         String salt = CommonUtil.getRandomString(6);

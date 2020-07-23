@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "ff428e45-4034-4637-b7ce-70b07aac4c4e",
+		"name": "bootshiro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/resource/menus",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "appId",
+						"value": "1006",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzUxMiIsInppcCI6IkRFRiJ9.eNoky1sKwjAQheG9zHMDzX3SzUiaTKQqVjKpCOLeTfTpwMf533BpGyxQEMmVkgXmmIQJcxbB61VoRdEok2JJESbgY-1nqZ1G50PwrtvG3K3tV7oLpvqkOjA2WKQN1qCRFieg1-MPdlY_qPuNRjj2dD6IG3y-AAAA__8.apDRBNW6dglGBYfDJ1QRbncJ7ZDQ-6C0f2DGn66tdWwjFAefvRfwI6UEvIVKF2PGBTJEfRS4-CY3BsWwzd0Y9w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/resource/menus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resource",
+						"menus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/account/login?tokenKey=get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/account/login?tokenKey=get",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"login"
+					],
+					"query": [
+						{
+							"key": "tokenKey",
+							"value": "get"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/account/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"appId\":\"13638679976\",\r\n\"password\":\"ER3OGTSpGKsyvFeomiriRQ==\",\r\n\"methodName\":\"login\",\r\n\"userKey\":\"AMNJER\",\r\n\"timestamp\":\"Wed, 22 Jul 2020 01:42:44 GMT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/account/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uid\":\"1006\",\r\n    \"username\":\"13638679976\",\r\n    \"password\":\"ER3OGTSpGKsyvFeomiriRQ==\",\r\n    \"userKey\":\"AMNJER\",\r\n    \"methodName\":\"register\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

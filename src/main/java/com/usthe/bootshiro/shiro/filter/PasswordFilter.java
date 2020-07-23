@@ -15,6 +15,7 @@ import org.apache.shiro.web.filter.AccessControlFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -31,6 +32,7 @@ public class PasswordFilter extends AccessControlFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PasswordFilter.class);
 
+    @Autowired
     private StringRedisTemplate redisTemplate;
 
     private boolean isEncryptPassword;
@@ -53,7 +55,9 @@ public class PasswordFilter extends AccessControlFilter {
             String tokenKey = CommonUtil.getRandomString(16);
             String userKey = CommonUtil.getRandomString(6);
             try {
-                redisTemplate.opsForValue().set("TOKEN_KEY_"+ IpUtil.getIpFromRequest(WebUtils.toHttp(request)).toUpperCase()+userKey.toUpperCase(),tokenKey,5, TimeUnit.SECONDS);
+                String keyStr = "TOKEN_KEY_"+userKey.toUpperCase();
+                redisTemplate.opsForValue().set(keyStr,tokenKey,5000, TimeUnit.SECONDS);
+                //redisTemplate.opsForValue().set("bbb","txxxx");
                 // 动态秘钥response返回给前端
                 Message message = new Message();
                 message.ok(1000,"issued tokenKey success")
@@ -160,7 +164,7 @@ public class PasswordFilter extends AccessControlFilter {
         String host = IpUtil.getIpFromRequest(WebUtils.toHttp(request));
         String userKey = map.get("userKey");
         if (isEncryptPassword) {
-            String tokenKey = redisTemplate.opsForValue().get("TOKEN_KEY_"+host.toUpperCase()+userKey);
+            String tokenKey = redisTemplate.opsForValue().get("TOKEN_KEY_"+userKey.toUpperCase());
             password = AesUtil.aesDecode(password,tokenKey);
         }
         return new PasswordToken(appId,password,timestamp,host);
